@@ -19,15 +19,25 @@ Stack.prototype.push = function (value) {
 
 /**
  * Returns the topmost element and removes it from the stack
- * @param value
  * @returns popped element
  */
-Stack.prototype.pop = function (value) {
-    const poppedElement = this._storage[this._size];
+Stack.prototype.pop = function () {
+    const poppedElement = this._storage[this._size - 1];
 
-    delete this._storage[this._size];
+    delete this._storage[this._size - 1];
 
     this._size--;
 
     return poppedElement;
 };
+
+/**
+ * Returns the size of the stack
+ * @returns {number}
+ */
+Stack.prototype.size = function () {
+    return this._size;
+};
+
+
+export default Stack;

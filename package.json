@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "algos.js",
+  "babel": {
+    "presets": [
+      "latest"
+    ]
+  },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --compilers babel-register"
   },
   "repository": {
     "type": "git",
@@ -17,6 +22,8 @@
   },
   "homepage": "https://github.com/pruthvip/algos#readme",
   "devDependencies": {
+    "babel-preset-latest": "^6.24.0",
+    "babel-register": "^6.24.0",
     "mocha": "^3.2.0"
   }
 }
