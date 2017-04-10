@@ -1,5 +1,5 @@
 import assert from 'assert';
-import Stack from '../implementaions/stack';
+import Stack from '../implementations/stack';
 
 describe('Stack', function() {
     it('Should create a stack of size 0', function() {
