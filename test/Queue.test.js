@@ -3,7 +3,6 @@ import Queue from '../implementations/Queue';
 
 describe('Queue', function() {
   const Q1 = new Queue();
-  const noOfElements = 5;
   Q1.enqueue(31);
   Q1.enqueue(41);
   Q1.enqueue(51);

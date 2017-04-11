@@ -1,10 +1,11 @@
 /**
  *
+ * @param n defines the size of the stack
  * @constructor
  */
-function Stack() {
-    this._storage = [];
-    this._size = 0;
+function Stack(n = 10) {
+  this._maxSize = n;
+  this._storage = [];
 }
 
 /**
@@ -12,8 +13,11 @@ function Stack() {
  * @param value
  */
 Stack.prototype.push = function (value) {
-    this._storage[this._size] = value;
-    this._size++;
+  if (this._maxSize < this._storage.length + 1) {
+    return 'overflow';
+  }
+
+  this._storage.push(value);
 };
 
 
@@ -22,22 +26,20 @@ Stack.prototype.push = function (value) {
  * @returns popped element
  */
 Stack.prototype.pop = function () {
-    const poppedElement = this._storage[this._size - 1];
+  if (this.isStackEmpty()) {
+    return 'underflow';
+  }
 
-    delete this._storage[this._size - 1];
-
-    this._size--;
-
-    return poppedElement;
+  return (this._storage.splice(-1, 1));
 };
+
 
 /**
- * Returns the size of the stack
- * @returns {number}
+ * Checks if the stack is empty or not
+ * @returns {boolean} true is stack is empty
  */
-Stack.prototype.size = function () {
-    return this._size;
+Stack.prototype.isStackEmpty = function () {
+  return this._storage.length <= 0
 };
-
 
 export default Stack;

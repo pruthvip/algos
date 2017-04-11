@@ -3,39 +3,40 @@ import Stack from '../implementations/stack';
 
 describe('Stack', function() {
     it('Should create a stack of size 0', function() {
-        const S1 = new Stack();
+        const S1 = new Stack(0);
 
-        assert.equal(0, S1.size());
+        assert.equal(true, S1.isStackEmpty());
     });
 
-    const S1 = new Stack();
+    const S1 = new Stack(2);
+    S1.push(31);
+    S1.push(41);
+    console.log('s1',S1._storage);
 
-    describe('Push Operations', function() {
-        it('Should push an item to the stack to make the size 1', function() {
-            S1.push(31);
+    describe('Push Operations after pushing (31, 41) on a stack of length 2', function() {
+      it('Should throw an error, as the size has reached', function() {
+        assert.equal('overflow', S1.push(51));
+        console.log('s1',S1._storage);
 
-            assert.equal(1, S1.size());
-        });
+      });
 
-        it('Should push the second element to make size 1', function() {
-            S1.push(41);
-
-            assert.equal(2, S1.size());
-        });
     });
 
-    describe('Pop Operations', function() {
-        it('Should pop the topmost element', function() {
+    describe('Pop Operations for the push operations(31, 41)', function() {
+        it('Should pop the topmost element i.e 41', function() {
             assert.equal(41, S1.pop());
-            assert.equal(1, S1.size());
         });
 
-        it('Should pop the topmost element', function() {
+        it('Should pop the topmost element i.e 31', function() {
             assert.equal(31, S1.pop());
         });
 
         it ('Stack should be empty', function () {
-            assert.equal(0, S1.size());
+          assert.equal(true, S1.isStackEmpty());
         });
+
+      it ('Should throw an error, if stack is empty', function () {
+        assert.equal('underflow', S1.pop());
+      });
     });
 });
